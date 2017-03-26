@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package pl.cubeitg.web;
 
 import java.io.Serializable;
@@ -11,7 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import pl.cubeitg.dao.DocumentDao;
+import pl.cubeitg.core.DocumentService;
 import pl.cubeitg.entity.Document;
 
 import javax.annotation.PostConstruct;
@@ -23,23 +18,27 @@ import javax.annotation.PostConstruct;
 @Component("myBean")
 public class MyBean implements Serializable {
 
-    private DocumentDao documentDao;
-
-    @Autowired
-    public MyBean(DocumentDao documentDao) {
-        this.documentDao = documentDao;
-    }
-
     @Getter @Setter
     private Document document;
+
+    private DocumentService documentService;
+
+    @Autowired
+    private void inject(DocumentService documentService) {
+        this.documentService = documentService;
+    }
+
 
     @PostConstruct
     private void init() {
         document = new Document();
     }
 
-    public String addNewDocument() {
-        documentDao.save(document);
+    public String goToInner() {
+        return "inner";
+    }
+
+    public String goToIndex() {
         return "index";
     }
 

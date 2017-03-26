@@ -6,11 +6,12 @@
       xmlns:p="http://primefaces.org/ui">
 
 <h:head>
-        <title>Index</title>
+        <title>Inner</title>
     </h:head>
     <h:body>
+        <h:inputHidden id="hideninput" value="#{myBean.document.id}" />
         <h:form id="form">
-            <p:commandButton ajax="false" action="#{myBean.goToInner}" value="Go To Inner" />
+            <p:commandButton id="addDocument" ajax="false" action="#{myBean.goToIndex}" value="Go To Index" />
         </h:form>
     </h:body>
 </html>

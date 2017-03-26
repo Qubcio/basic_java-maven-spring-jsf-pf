@@ -3,7 +3,6 @@ package pl.cubeitg.dao.hibernate;
 import org.hibernate.Transaction;
 import org.springframework.stereotype.Repository;
 import pl.cubeitg.dao.DocumentDao;
-import pl.cubeitg.dao.HibernateUtil;
 import pl.cubeitg.entity.Document;
 import org.hibernate.Session;
 import java.io.Serializable;
