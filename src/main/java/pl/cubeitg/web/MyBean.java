@@ -6,8 +6,15 @@
 package pl.cubeitg.web;
 
 import java.io.Serializable;
-import javax.annotation.PostConstruct;
+
+import lombok.Getter;
+import lombok.Setter;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import pl.cubeitg.dao.DocumentDao;
+import pl.cubeitg.entity.Document;
+
+import javax.annotation.PostConstruct;
 
 /**
  *
@@ -15,18 +22,25 @@ import org.springframework.stereotype.Component;
  */
 @Component("myBean")
 public class MyBean implements Serializable {
-    private String title;
 
-    public String getTitle() {
-        return title;
+    private DocumentDao documentDao;
+
+    @Autowired
+    public MyBean(DocumentDao documentDao) {
+        this.documentDao = documentDao;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
-    
+    @Getter @Setter
+    private Document document;
+
     @PostConstruct
-    public void init() {
-        title = "Mój bean!!!";
+    private void init() {
+        document = new Document();
     }
+
+    public String addNewDocument() {
+        documentDao.save(document);
+        return "index";
+    }
+
 }
