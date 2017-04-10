@@ -9,10 +9,11 @@
         <property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/testowa1</property>
         <property name="hibernate.connection.username">postgres</property>
         <property name="hibernate.connection.password">q1w2e3r4</property>
-        <property name="hibernate.hbm2ddl.auto">update</property>
+        <property name="hibernate.hbm2ddl.auto">create-drop</property>
         <property name="hibernate.connection.pool_size">15</property>
         <property name="hibernate.current_session_context_class">thread</property>
 
         <mapping class="pl.cubeitg.entity.Document" />
+        <mapping class="pl.cubeitg.entity.Person" />
     </session-factory>
 </hibernate-configuration>

@@ -7,6 +7,7 @@ import pl.cubeitg.dao.DocumentDao;
 import pl.cubeitg.entity.Document;
 
 import java.io.Serializable;
+import java.util.List;
 
 @Service
 public class DocumentServiceImp implements Serializable, DocumentService {
@@ -26,5 +27,10 @@ public class DocumentServiceImp implements Serializable, DocumentService {
     @Override
     public Document get(Long id) {
         return documentDao.get(id);
+    }
+
+    @Override
+    public List<Document> getAll() {
+        return documentDao.getAll();
     }
 }

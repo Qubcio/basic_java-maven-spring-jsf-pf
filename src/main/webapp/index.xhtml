@@ -9,8 +9,25 @@
         <title>Index</title>
     </h:head>
     <h:body>
+        <h:inputHidden id="hideninput" value="#{myBean.person.id}" />
         <h:form id="form">
-            <p:commandButton ajax="false" action="#{myBean.goToInner}" value="Go To Inner" />
+            <p:dataTable var="person" value="#{myBean.personList}" rows="10"
+                         paginator="true"
+                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                         rowsPerPageTemplate="5,10,15">
+                <p:column headerText="Id">
+                    <h:outputText value="#{person.id}" />
+                </p:column>
+                <p:column headerText="Id">
+                    <h:outputText value="#{person.name}" />
+                </p:column>
+                <p:column headerText="Id">
+                    <h:outputText value="#{person.surname}" />
+                </p:column>
+                <p:column headerText="Id">
+                    <h:outputText value="#{person.login}" />
+                </p:column>
+            </p:dataTable>
         </h:form>
     </h:body>
 </html>
